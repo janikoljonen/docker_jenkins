@@ -17,3 +17,6 @@ nginx:
 
 slave:
   build: jenkins-slave
+
+bitrockslave:
+  build: jenkins-slave-bitrock    
