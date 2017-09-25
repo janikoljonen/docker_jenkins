@@ -12,7 +12,8 @@ RUN yum makecache \
     zip \
     openssh-client \
     unzip \
-    java-1.8.0-openjdk \   
+    java-1.8.0-openjdk \
+    git \   
     && yum clean all
     
 
