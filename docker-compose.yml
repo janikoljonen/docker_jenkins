@@ -1,22 +1,46 @@
-data:
-  build: jenkins-data
-
-master:
-  build: jenkins-master
-  volumes_from:
-    - data
-  ports:
-    - "50000:50000"
-
-nginx:
-  build: jenkins-nginx
-  ports:
-    - "80:80"
-  links:
-    - master:jenkins-master
-
-slave:
-  build: jenkins-slave
-
-bitrockslave:
-  build: jenkins-slave-bitrock    
+version: "3.3"
+services:
+    master:
+        build:
+            context: ./jenkins-master
+            args:
+                - PROXY=${PROXY}
+                - JENKINS_VERSION=${JENKINS_VERSION}
+                - JENKINS_SHA=${JENKINS_SHA}
+                - JAVA_OPTS=${JAVA_OPTS}
+                - JENKINS_OPTS=${JENKINS_OPTS}
+        ports:
+            - "50000:50000"
+            - "8080:8080"
+        volumes:
+            - ./jenkins-master/data/jenkins_home:/var/jenkins_home
+            - ./jenkins-master/log/jenkins:/var/log/jenkins
+            - ./jenkins-master/plugins.txt:/tmp/plugins.txt
+            - ./jenkins-master/plugins.sh:/usr/local/bin/plugins.sh
+            - ./jenkins-master/init.groovy:/usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
+            - ./jenkins-master/certs:/usr/local/etc/jenkins/certs
+        command: >
+            bash -c "
+                /usr/local/bin/plugins.sh /tmp/plugins.txt;
+                rsync -a /usr/share/jenkins/ref /var/jenkins_home;
+                touch /var/jenkins_home/ref/plugins/*.jpi.pinned;
+                exec java ${JAVA_OPTS} -jar /usr/share/jenkins/jenkins.war ${JENKINS_OPTS};"
+    nginx:
+        build:
+            context: ./jenkins-nginx
+            args:
+                - PROXY=${PROXY}
+        ports:
+            - "9090:80"
+        volumes:
+            - ./jenkins-nginx/conf/jenkins.conf:/etc/nginx/conf.d/jenkins.conf
+            - ./jenkins-nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+        depends_on:
+            - master
+        command: nginx
+    slave:
+        build: jenkins-slave
+        dns:
+            - 8.8.8.8
+            - 9.9.9.9
+        command: ["/usr/sbin/sshd","-D"]
