@@ -1,9 +1,5 @@
 FROM centos:7
 
-# Install Essentials
-RUN yum update -y && \
-         yum clean all
-
 # Install Packages
 RUN yum -y update && \
     yum -y install git \
