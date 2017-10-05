@@ -1,5 +1,8 @@
 # docker_jenkins
-A docker jenkins setup
+    A docker jenkins setup
+
+# Start nginx, master and create slave image
+    $ docker-compose up -d master nginx && docker-compose  create slave
 
 # Docker - How to cleanup (unused) resources
 
