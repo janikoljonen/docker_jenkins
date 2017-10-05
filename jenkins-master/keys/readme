@@ -1,0 +1,8 @@
+Create ssh key pair for master -> slave 
+1. ssh-keygen -t rsa -b 4096
+2. Enter a passphrase if you want one (needed in Jenkins later!)
+3. Choose: ./id_rsa as your file location
+4. ls -la
+5. Confirm “id_rsa” and “id_rsa.pub” are created
+6. mv id_rsa.pub jenkins-slave/files/authorized_keys
+7. add the id_rsa to jenkins credentials as a private key
