@@ -1,5 +1,26 @@
 # docker_jenkins
-A docker jenkins setup
+    
+    A docker jenkins setup
+
+## Start nginx, master and create slave image
+    
+    $ docker-compose up -d master nginx && docker-compose -p jenkins create slave
+    
+If you don't want the master to control the start of slave container, you can just run:
+    
+    $ docker-compose -p jenkins up -d
+    
+## Tail logs
+
+    $ docker-compose logs -tf
+    
+## Use docker-compose exec
+
+    $ docker-compose exec {service} {command} 
+    
+Example: 
+    
+    $ docker-compose exec master /bin/bash
 
 # Docker - How to cleanup (unused) resources
 
@@ -27,6 +48,10 @@ Once in a while, you may need to cleanup resources (containers, volumes, images,
     
     $ docker images | grep "none"
     $ docker rmi $(docker images | grep "none" | awk '/ / { print $3 }')
+
+## stop containers with image name
+
+    $ docker rm $(docker stop $(docker ps -a -q --filter ancestor=<image-name> --format="{{.ID}}"))
 
 ## remove docker containers
 
