@@ -51,7 +51,7 @@ Once in a while, you may need to cleanup resources (containers, volumes, images,
 
 ## stop containers with image name
 
-    $ docker ps -a -q  --filter ancestor=<image-name>
+    $ docker rm $(docker stop $(docker ps -a -q --filter ancestor=<image-name> --format="{{.ID}}"))
 
 ## remove docker containers
 
