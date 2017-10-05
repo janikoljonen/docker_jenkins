@@ -1,8 +1,26 @@
 # docker_jenkins
+    
     A docker jenkins setup
 
 # Start nginx, master and create slave image
-    $ docker-compose up -d master nginx && docker-compose  create slave
+    
+    $ docker-compose up -d master nginx && docker-compose create slave
+    
+If you don't want the master to control the start of slave container, you can just run:
+    
+    $ docker-compose up -d
+    
+# Tail logs
+
+    $ docker-compose logs -tf
+    
+# Use docker-compose exec
+
+    $ docker-compose exec {service} {command} 
+    
+Example: 
+    
+    $ docker-compose exec master /bin/bash
 
 # Docker - How to cleanup (unused) resources
 
