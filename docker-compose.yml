@@ -23,7 +23,7 @@ services:
             bash -c "
                 /usr/local/bin/plugins.sh /tmp/plugins.txt;
                 rsync -a /usr/share/jenkins/ref/ /var/jenkins_home;
-                touch /var/jenkins_home/plugins/*.jpi.pinned;
+                find /var/jenkins_home/plugins -name "*.jpi" -exec touch {}.pinned \;
                 exec java ${JAVA_OPTS} -jar /usr/share/jenkins/jenkins.war ${JENKINS_OPTS};"
     nginx:
         build:
