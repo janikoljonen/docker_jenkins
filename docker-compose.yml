@@ -22,7 +22,7 @@ services:
         command: >
             bash -c "
                 /usr/local/bin/plugins.sh /tmp/plugins.txt;
-                rsync -a /usr/share/jenkins/ref/ /var/jenkins_home;
+                rsync -rltvzO /usr/share/jenkins/ref/ /var/jenkins_home;
                 find /var/jenkins_home/plugins -name "*.jpi" -exec touch {}.pinned \;
                 exec java ${JAVA_OPTS} -jar /usr/share/jenkins/jenkins.war ${JENKINS_OPTS};
                 RUN chmod +r /usr/local/etc/jenkins/certs/ca.pem;
