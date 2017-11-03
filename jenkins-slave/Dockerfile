@@ -2,8 +2,12 @@ FROM centos:7
 
 # Install Packages
 RUN yum -y update && \
+    yum -y groupinstall "Development Tools" && \ 
     yum -y install git \
         wget \
+        libX11-devel \
+        sshpass \
+        bc \
         which \
         svn \
         openssh-server \
@@ -27,6 +31,12 @@ RUN chgrp -R jenkins /home/jenkins
 RUN chmod 600 /home/jenkins/.ssh/authorized_keys
 RUN chmod 700 /home/jenkins/.ssh
 
+#Add ifort to linux build agent
+#RUN mkdir -p /usr/local/vol/intel
+#COPY /data/ifort/ /usr/local/vol/intel/ifort_16.0.4
+#RUN chown -R jenkins:jenkins /usr/local/vol/intel
+#RUN chmod +x /usr/local/vol/intel/ifort_16.0.4/bin/compilervars.sh
+ 
 # Add the jenkins user to sudoers
 RUN echo "jenkins  ALL=(ALL)  ALL" >> etc/sudoers
 

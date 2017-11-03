@@ -46,4 +46,6 @@ services:
         dns:
             - 8.8.8.8
             - 9.9.9.9
+        volumes:
+            - ./jenkins-slave/data/ifort:/usr/local/vol/intel/ifort_16.0.4
         command: ["/usr/sbin/sshd","-D"]
