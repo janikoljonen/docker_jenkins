@@ -14,6 +14,7 @@ services:
             - "8080:8080"
         volumes:
             - ./jenkins-master/data/jenkins_home:/var/jenkins_home
+            - /var/run/docker.sock:/var/run/docker.sock
             - ./jenkins-master/log/jenkins:/var/log/jenkins
             - ./jenkins-master/plugins.txt:/tmp/plugins.txt
             - ./jenkins-master/plugins.sh:/usr/local/bin/plugins.sh
@@ -27,7 +28,8 @@ services:
                 exec java ${JAVA_OPTS} -jar /usr/share/jenkins/jenkins.war ${JENKINS_OPTS};
                 RUN chmod +r /usr/local/etc/jenkins/certs/ca.pem;
                 RUN chmod +r /usr/local/etc/jenkins/certs/cert.pem;
-                RUN chown -R jenkins:jenkins /usr/local/etc/jenkins;"
+                RUN chown -R jenkins:jenkins /usr/local/etc/jenkins;
+                RUN chmod 777 /var/run/docker.sock"
     nginx:
         build:
             context: ./jenkins-nginx
