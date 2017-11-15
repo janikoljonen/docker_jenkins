@@ -50,7 +50,7 @@ handlebars
 htmlpublisher
 icon-shim
 jackson2-api
-javadoc-plugin
+javadoc
 jclouds-jenkins
 jira
 jquery-detached
