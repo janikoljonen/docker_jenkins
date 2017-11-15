@@ -49,7 +49,6 @@ RUN mkdir /var/log/jenkins
 RUN mkdir /var/cache/jenkins
 RUN chown -R jenkins:jenkins /var/log/jenkins
 RUN chown -R jenkins:jenkins /var/cache/jenkins
-#RUN chown -R jenkins:jenkins /usr/local/etc/jenkins
 
 # Switch to the jenkins user
 USER jenkins
