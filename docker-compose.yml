@@ -11,7 +11,7 @@ services:
                 - JENKINS_OPTS=${JENKINS_OPTS}
         ports:
             - "50000:50000"
-            - "8080:8080"
+            - "8180:8080"
         volumes:
             - ./jenkins-master/data/jenkins_home:/var/jenkins_home
             - /var/run/docker.sock:/var/run/docker.sock
@@ -28,8 +28,7 @@ services:
                 exec java ${JAVA_OPTS} -jar /usr/share/jenkins/jenkins.war ${JENKINS_OPTS};
                 RUN chmod +r /usr/local/etc/jenkins/certs/ca.pem;
                 RUN chmod +r /usr/local/etc/jenkins/certs/cert.pem;
-                RUN chown -R jenkins:jenkins /usr/local/etc/jenkins;
-                RUN chmod 777 /var/run/docker.sock"
+                RUN chown -R jenkins:jenkins /usr/local/etc/jenkins;"
     nginx:
         build:
             context: ./jenkins-nginx
