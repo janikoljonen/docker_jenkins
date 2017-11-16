@@ -20,6 +20,8 @@ services:
             - ./jenkins-master/plugins.sh:/usr/local/bin/plugins.sh
             - ./jenkins-master/init.groovy:/usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
             - ./jenkins-master/certs:/usr/local/etc/jenkins/certs
+        extra_hosts:
+            - "janus.ad.thermocalc.se:10.100.165.26"
         command: >
             bash -c "
                 /usr/local/bin/plugins.sh /tmp/plugins.txt;
