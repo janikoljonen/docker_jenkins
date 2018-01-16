@@ -30,6 +30,7 @@ cloudbees-folder
 config-file-provider
 credentials
 credentials-binding
+delivery-pipeline-plugin
 display-url-api
 docker-commons
 docker-java-api
