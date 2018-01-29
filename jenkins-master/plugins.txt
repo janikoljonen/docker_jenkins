@@ -1,12 +1,14 @@
 ace-editor
 ant
 antisamy-markup-formatter
+apache-httpcomponents-client-4-api
 authentication-tokens
 blueocean
 blueocean-autofavorite
 blueocean-bitbucket-pipeline
 blueocean-commons
 blueocean-config
+blueocean-core-js
 blueocean-dashboard
 blueocean-display-url
 blueocean-events
@@ -27,6 +29,7 @@ branch-api
 build-timeout
 cloudbees-bitbucket-branch-source
 cloudbees-folder
+conditional-buildstep
 config-file-provider
 credentials
 credentials-binding
@@ -48,13 +51,17 @@ github-branch-source
 gradle
 groovy
 handlebars
+handy-uri-templates-2-api
 htmlpublisher
 icon-shim
 jackson2-api
 javadoc
 jclouds-jenkins
+jenkins-design-language
 jira
+jquery
 jquery-detached
+jsch
 junit
 ldap
 mailer
@@ -65,6 +72,7 @@ maven-plugin
 mercurial
 momentjs
 pam-auth
+parameterized-trigger
 pipeline-build-step
 pipeline-github-lib
 pipeline-graph-analysis
@@ -82,6 +90,8 @@ pipeline-utility-steps
 plain-credentials
 pubsub-light
 resource-disposer
+run-condition
+conditional-buildstep
 scm-api
 script-security
 sse-gateway
@@ -93,6 +103,7 @@ timestamper
 token-macro
 variant
 workflow-api
+workflow-aggregator
 workflow-basic-steps
 workflow-cps
 workflow-cps-global-lib
