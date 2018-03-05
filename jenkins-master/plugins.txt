@@ -71,6 +71,7 @@ matrix-project
 maven-plugin
 mercurial
 momentjs
+parameterized-trigger
 pam-auth
 parameterized-trigger
 pipeline-build-step
@@ -91,7 +92,6 @@ plain-credentials
 pubsub-light
 resource-disposer
 run-condition
-conditional-buildstep
 scm-api
 script-security
 sse-gateway
@@ -102,6 +102,7 @@ subversion
 timestamper
 token-macro
 variant
+workflow-aggregator
 workflow-api
 workflow-aggregator
 workflow-basic-steps
@@ -114,3 +115,4 @@ workflow-scm-step
 workflow-step-api
 workflow-support
 ws-cleanup
+xvfb
