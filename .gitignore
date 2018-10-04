@@ -1,2 +1,4 @@
 jenkins-master/log/*
 jenkins-master/data/*
+jenkins-slave/data/*
+jenkins-slave-python3/data/*
